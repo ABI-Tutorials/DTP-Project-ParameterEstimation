@@ -61,11 +61,24 @@ In this project, we use the simplified geometric model shown in :numref:`fig_dtp
    :width: 90%
 
    The specific geometric model used in this project. In this tissue model the muscle fibres are aligned in the same direction, indicated by the silver line. The blue plane indicates the orthogonal direction.
+   
+:numref:`fig_dtp_cp_estimationproject_simulationresults` shows some simulation results when performing some passive stretch experiments using the tissue model from :numref:`fig_dtp_cp_estimationproject_mesh`. These results illustrate the difference in material properties when stretching the tissue in the fibre vs cross-fibre direction.
+
+.. _fig_dtp_cp_estimationproject_simulationresults:
+
+.. figure:: _static/simulation-results.png
+   :align: center
+   :width: 90%
+
+   Simulation results from performing passive stretch experiments with our cardiac tissue model. The results on the left show the resulting deformation and reaction forces when stretching the tissue in the direction of the tissue fibres, while those on the right show the results when stretching in the cross-fibre direction. Each pair of results is the same applied stretch. In particular, notice the much larger reaction forces in the fibre stretches - i.e., much more energy needs to be applied in order to stretch the tissue along the fibres compared to across the fibres for the same magnitude stretch.
+
 
 Data collection
 ---------------
 
-The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that we have some hope that this will be an achievable task. You can see typical experimental data from a real cardiac trabecula that would be used in a lab here: https://youtu.be/_VHZyPEpxsc. Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction. The actual data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
+The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that we have some hope that this will be an achievable task. You can see typical experimental data from a real cardiac trabecula that would be used in a lab here: https://youtu.be/_VHZyPEpxsc. 
+
+Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction. The actual data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
 
 .. _fig_dtp_cp_estimationproject_data:
 
@@ -82,6 +95,17 @@ The first step in this project is to collect the experimental data that will be 
    :width: 90%
 
    Illustrating the "manual segmentation" method that we will use to obtain the actual experimental data. When extracting the numerical values, you will need to collect **5 data points** for each of the fibre and cross-fibre relationships.
+   
+Constitutive model
+------------------
+
+For this project, we want to predict the passive material properties of the cardiac tissue given the observed experimental data in :numref:`fig_dtp_cp_estimationproject_data`. So in addition to the geometric model in :numref:`fig_dtp_cp_estimationproject_mesh` we need a material constitutive model. In this project we will use the `Guccione model <http://www.ncbi.nlm.nih.gov/pubmed/2020175?dopt=Abstract>`_. This model, and many other potential models to use, is available in the Physiome Repository - https://models.physiomeproject.org/e/26d/guccione.cellml/view.
+
+.. math::
+   :label: dtp_cp_sim_sine_model
+   
+   \bbox[5px,border:2px solid red]{x(t)} &= \mathit{sin}(t),\\
+   y'(t) &= \mathit{cos}(t) \quad\mathrm{with}\quad y(0) = 0.
 
 You will need to start MAP Client and create a new workflow via the menu item  :menuselection:`File --> New --> Workflow`. This just requires you to select a folder: create a new, empty folder, for example "estimationproject" on the Desktop, and select it.
 
