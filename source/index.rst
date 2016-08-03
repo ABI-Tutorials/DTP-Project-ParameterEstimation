@@ -132,8 +132,8 @@ We suggest starting with the :guilabel:`Iron Simulation` step and using the port
 
 On execution, your workflow should perform the required simulations and present you with a comparison of your simulation results with the measured experimental data.
 
-Parmeter estimation
--------------------
+Parameter estimation
+--------------------
 
 As mentioned, we will be using a manual estimation process in this project. This requires you to use your workflow to estimate parameter values and compare the predicted tissue behaviour to that you have measured from the experimental data. And then repeat until you are happy with the comparison.
 
