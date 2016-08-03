@@ -78,7 +78,7 @@ Data collection
 
 The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that we have some hope that this will be an achievable task. You can see typical experimental data from a real cardiac trabecula that would be used in a lab here: https://youtu.be/_VHZyPEpxsc. 
 
-Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction. The actual data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
+Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction (see :numref:`fig_dtp_cp_estimationproject_simulationresults`). The actual data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
 
 .. _fig_dtp_cp_estimationproject_data:
 
@@ -99,13 +99,48 @@ Since our model is homogeneous and transversly isotropic, we can reduce the data
 Constitutive model
 ------------------
 
-For this project, we want to predict the passive material properties of the cardiac tissue given the observed experimental data in :numref:`fig_dtp_cp_estimationproject_data`. So in addition to the geometric model in :numref:`fig_dtp_cp_estimationproject_mesh` we need a material constitutive model. In this project we will use the `Guccione model <http://www.ncbi.nlm.nih.gov/pubmed/2020175?dopt=Abstract>`_. This model, and many other potential models to use, is available in the Physiome Repository - https://models.physiomeproject.org/e/26d/guccione.cellml/view.
+For this project, we want to predict the passive material properties of the cardiac tissue given the observed experimental data in :numref:`fig_dtp_cp_estimationproject_data`. So in addition to the geometric model in :numref:`fig_dtp_cp_estimationproject_mesh` we need a material constitutive model that captures the cardiac tissue properties that we are interested in. For this project we will use the `Guccione model <http://www.ncbi.nlm.nih.gov/pubmed/2020175?dopt=Abstract>`_. This model, and many other potential models to use, is available in the Physiome Repository - https://models.physiomeproject.org/e/26d/guccione.cellml/view. **You will need to download the CellML file for this model from the repository, make sure you save it somewhere convenient.**
 
-.. math::
-   :label: dtp_cp_sim_sine_model
+The equations for the Guccione model are shown in :numref:`fig_dtp_cp_estimationproject_guccione` (you can see the exact equations used in the model repository - https://models.physiomeproject.org/e/26d/guccione.cellml/@@cellml_math).
+
+.. _fig_dtp_cp_estimationproject_guccione:
    
-   \bbox[5px,border:2px solid red]{x(t)} &= \mathit{sin}(t),\\
-   y'(t) &= \mathit{cos}(t) \quad\mathrm{with}\quad y(0) = 0.
+.. figure:: _static/guccione.png
+   :align: center
+   :width: 90%
 
-You will need to start MAP Client and create a new workflow via the menu item  :menuselection:`File --> New --> Workflow`. This just requires you to select a folder: create a new, empty folder, for example "estimationproject" on the Desktop, and select it.
+   The equations of Guccione model defining the 6 components of the stress tensor, *T*, given the 6 components of the strain tensor, *E*. The four material parameters we want to estimate in this project are highlighted (c\ :sub:`1` ... c\ :sub:`4`). The transverse isotropic nature of this model can be seen by comparing the equation for the fibre stress (T\ :sub:`11`) to that for both of the the cross-fibre stresses (T\ :sub:`22` and T\ :sub:`33`). Understanding which material parameters are important for each of the stress-strain relationships will help guide your parameter estimation.
+   
+
+Workflow construction
+---------------------
+
+Following the "manual segmentation" method, we will be using a manual parameter estimation method to predict the passive material properties of the cardiac tissue described in :numref:`fig_dtp_cp_estimationproject_data`. Therefore, the second step in this project is to construct a workflow in MAP Client that will let you perform some simulations using the cardiac tissue model with your estimated material parameters, and then compare your simulation results to the data you measured.
+
+You will need to start MAP Client and create a new workflow via the menu item  :menuselection:`File --> New --> Workflow`. This just requires you to select a folder: create a new, empty folder, for example :file:`estimationproject` on the Desktop, and select it.
+
+For this project you will need to make use of the following MAP Client steps.
+
+* :guilabel:`Iron Simulation` -- to perform the actual simulation.
+* :guilabel:`Simulation Review` -- to compare simulated data to measured data.
+* :guilabel:`Graph Segmentation` -- to enter the numeric values extracted from the experimental data.
+* :guilabel:`File Chooser` -- to provide the CellML file for the Guccione model.
+* :guilabel:`Directory Chooser` -- to define an *output* folder to store the simulation results.
+* :guilabel:`Parameter Setting` -- to define your current estimate of the passive material properties.
+
+We suggest starting with the :guilabel:`Iron Simulation` step and using the port definitions to determine the workflow connectivity. In the configuration of the workflow, you should be able to enter your current estimates for the four material parameters and the numeric values measured from the experimental data. The :guilabel:`Graph Segmentation` step expects 10 data points to be given -- the first 5 should be the fibre direction and the second 5 the cross-fibre direction.
+
+On execution, your workflow should perform the required simulations and present you with a comparison of your simulation results with the measured experimental data.
+
+Parmeter estimation
+-------------------
+
+As mentioned, we will be using a manual estimation process in this project. This requires you to use your workflow to estimate parameter values and compare the predicted tissue behaviour to that you have measured from the experimental data. And then repeat until you are happy with the comparison.
+
+Some tips that might help:
+
+* the parameter values are whole numbers
+* what is the main effect of each of the parameters?
+* how accurate are your measured values?
+* how accurate is the printed graph?
 
