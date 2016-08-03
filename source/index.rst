@@ -52,7 +52,7 @@ As you may know, caridac tissue consists of cells aligned in fibres, as shown in
 
    Illustrations of the fibrous nature of cardiac tissue. 
 
-In this project, we use the simplified geometric model shown in :numref:`fig_dtp_cp_estimationproject_mesh`. While this is a relatively trivial model, it is a reasonable approximation to an often used experimental preparation - the cardiac trabeculae. An example trabecula https://youtu.be/_VHZyPEpxsc
+In this project, we use the simplified geometric model shown in :numref:`fig_dtp_cp_estimationproject_mesh`. While this is a relatively trivial model, it is a reasonable approximation to an often used experimental preparation - the `cardiac trabecula <https://en.wikipedia.org/wiki/Trabeculae_carneae>`_.
 
 .. _fig_dtp_cp_estimationproject_mesh:
 
@@ -60,12 +60,28 @@ In this project, we use the simplified geometric model shown in :numref:`fig_dtp
    :align: center
    :width: 90%
 
-   The specific geometric model used in this project. 
+   The specific geometric model used in this project. In this tissue model the muscle fibres are aligned in the same direction, indicated by the silver line. The blue plane indicates the orthogonal direction.
 
 Data collection
 ---------------
 
-The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that have known answers, but you can see typical experimental data that would be used in a lab here: https://youtu.be/_VHZyPEpxsc.
+The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that we have some hope that this will be an achievable task. You can see typical experimental data from a real cardiac trabecula that would be used in a lab here: https://youtu.be/_VHZyPEpxsc. Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction. The actual data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
+
+.. _fig_dtp_cp_estimationproject_data:
+
+.. figure:: _static/stress-strain-plot.png
+   :align: center
+   :width: 90%
+
+   The "experimental" data we will use to estimate the material properties of our cardiac tissue model.
+
+.. _fig_dtp_cp_estimationproject_segmentation:
+
+.. figure:: _static/manual-segmentation.png
+   :align: center
+   :width: 90%
+
+   Illustrating the "manual segmentation" method that we will use to obtain the actual experimental data. When extracting the numerical values, you will need to collect **5 data points** for each of the fibre and cross-fibre relationships.
 
 You will need to start MAP Client and create a new workflow via the menu item  :menuselection:`File --> New --> Workflow`. This just requires you to select a folder: create a new, empty folder, for example "estimationproject" on the Desktop, and select it.
 
