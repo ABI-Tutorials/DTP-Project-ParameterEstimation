@@ -39,6 +39,33 @@ In this project, we adapt the generic workflow shown in :numref:`fig_dtp_cp_esti
 
    The specific workflow for this project. The output for this workflow is to predict the passive mechanical material properties of a piece of cardiac tissue given the results from a mechanical testing experiment. As is commonly done, the actual experimental data will be extracted from a published paper where the actual data is only available as a printed figure. The extracted data will be used to predict the material properties of an existing cardiac tissue model.
 
+Geometric model
+---------------
+
+As you may know, caridac tissue consists of cells aligned in fibres, as shown in :numref:`fig_dtp_cp_estimationproject_cardiacfibres`. Mechanically, the tissue is much stiffer in the fibre direction than in the cross-fibre direction, and so it is very important for any model of cardiac tissue to take this into account.
+
+.. _fig_dtp_cp_estimationproject_cardiacfibres:
+
+.. figure:: _static/cardiac-fibres.png
+   :align: center
+   :width: 90%
+
+   Illustrations of the fibrous nature of cardiac tissue. 
+
+In this project, we use the simplified geometric model shown in :numref:`fig_dtp_cp_estimationproject_mesh`. While this is a relatively trivial model, it is a reasonable approximation to an often used experimental preparation - the cardiac trabeculae. An example trabecula https://youtu.be/_VHZyPEpxsc
+
+.. _fig_dtp_cp_estimationproject_mesh:
+
+.. figure:: _static/mesh.png
+   :align: center
+   :width: 90%
+
+   The specific geometric model used in this project. 
+
+Data collection
+---------------
+
+The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that have known answers, but you can see typical experimental data that would be used in a lab here: https://youtu.be/_VHZyPEpxsc.
 
 You will need to start MAP Client and create a new workflow via the menu item  :menuselection:`File --> New --> Workflow`. This just requires you to select a folder: create a new, empty folder, for example "estimationproject" on the Desktop, and select it.
 
