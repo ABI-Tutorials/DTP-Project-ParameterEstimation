@@ -78,7 +78,7 @@ Data collection
 
 The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that we have some hope that this will be an achievable task. You can see typical experimental data from a real cardiac trabecula that would be used in a lab here: https://youtu.be/_VHZyPEpxsc. 
 
-Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction (see :numref:`fig_dtp_cp_estimationproject_simulationresults`). The actual data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
+Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction (see :numref:`fig_dtp_cp_estimationproject_simulationresults`). Sample data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
 
 .. _fig_dtp_cp_estimationproject_data:
 
@@ -86,7 +86,7 @@ Since our model is homogeneous and transversly isotropic, we can reduce the data
    :align: center
    :width: 90%
 
-   The "experimental" data we will use to estimate the material properties of our cardiac tissue model.
+   Sample "experimental" data that could be used to estimate the material properties of our cardiac tissue model.
 
 .. _fig_dtp_cp_estimationproject_segmentation:
 
