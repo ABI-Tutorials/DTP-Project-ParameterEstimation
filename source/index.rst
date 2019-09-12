@@ -78,7 +78,7 @@ Data collection
 
 The first step in this project is to collect the experimental data that will be used in estimating the material properties of this tissue. In this project we are using simulated experimental data so that we have some hope that this will be an achievable task. You can see typical experimental data from a real cardiac trabecula that would be used in a lab here: https://youtu.be/_VHZyPEpxsc. 
 
-Since our model is homogeneous and transversly isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction (see :numref:`fig_dtp_cp_estimationproject_simulationresults`). Sample data we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and the segmentation method we will use to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
+Since our model is homogeneous and transversely isotropic, we can reduce the data required to parameterise the model to two stress-strain relationships - one for the fibre direction and one of the orthogonal cross-fibre direction (see :numref:`fig_dtp_cp_estimationproject_simulationresults`). Example data similar to what we will use is shown in :numref:`fig_dtp_cp_estimationproject_data` and a potential segmentation method used to extract the numerical values of the data is shown in :numref:`fig_dtp_cp_estimationproject_segmentation`.
 
 .. _fig_dtp_cp_estimationproject_data:
 
@@ -86,7 +86,7 @@ Since our model is homogeneous and transversly isotropic, we can reduce the data
    :align: center
    :width: 90%
 
-   Sample "experimental" data that could be used to estimate the material properties of our cardiac tissue model.
+   Example "experimental" data that could be used to estimate the material properties of our cardiac tissue model. This is not the data to be used in this project.
 
 .. _fig_dtp_cp_estimationproject_segmentation:
 
@@ -94,7 +94,9 @@ Since our model is homogeneous and transversly isotropic, we can reduce the data
    :align: center
    :width: 90%
 
-   Illustrating the "manual segmentation" method that we will use to obtain the actual experimental data. When extracting the numerical values, you will need to collect **5 data points** for each of the fibre and cross-fibre relationships.
+   Illustrating the "manual segmentation" method that could be used to obtain the actual experimental data.
+
+In this project, you will need to segment the stress-strain data available in this high-impact scientific paper: https://doi.org/10.17608/k6.auckland.9810233.v1. You may use any method you like to segment the data. When extracting the numerical values, you will need to collect **5 data points** for each of the fibre and cross-fibre relationships.
    
 Constitutive model
 ------------------
